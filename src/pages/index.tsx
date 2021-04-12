@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { database } from 'lib/firebase';
 import GraphComponent from 'components/graph';
 import MainComponent from 'components/main';
-import RankingComponent, { RankingList } from 'components/ranking';
+import RankingComponent from 'components/ranking';
 import LoginComponent from 'components/login';
 import {
   getUserName,
   setUserName as setUserNameAtLocal,
 } from 'lib/localStorage';
-import { flexCenter } from 'styles';
 import { getCount, getRanking } from 'lib/firebase/function';
-
+import Button from '@material-ui/core/Button';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 const Component: React.FC = (props) => {
   const [userName, setUserName] = React.useState(getUserName());
   const [count, setCount] = React.useState(0);
@@ -37,11 +36,11 @@ const Component: React.FC = (props) => {
     return function(next?: string) {
       if (isCancel) {
         setIsOpen(!!!userName.length);
-
         return;
       }
-      setUserName(next);
+
       setUserNameAtLocal(next);
+      setUserName(next);
       setIsOpen(!!!next.length);
     };
   }
@@ -63,10 +62,13 @@ const Component: React.FC = (props) => {
           cancel={tryLogin(true)}
         />
       )}
-      <button onClick={loginOpen}>
+      <Button
+        variant="contained"
+        startIcon={<AccountBoxIcon />}
+        onClick={loginOpen}
+      >
         <div>{userName}</div>
-        <div>変更</div>
-      </button>
+      </Button>
     </div>
   );
 };
@@ -83,13 +85,6 @@ const Style = styled(Component)`
     position: fixed;
     top: 1rem;
     right: 1rem;
-    ${flexCenter}
-    padding: 1rem 1.5rem;
-    flex-direction: column;
-    border-radius: .4rem;
-    border: none;
-    outline-color: inherit;
-    box-shadow: 0px 4px 5px 1px #0000002e;
     & > div {
       &:last-child {
         display: none;

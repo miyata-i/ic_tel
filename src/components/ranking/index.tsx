@@ -11,16 +11,25 @@ export type Props = {
   ranking: RankingList,
 };
 const Component: React.FC<Props> = (props) => {
-  const mapList = props.ranking.map((row) => (
+  const mapList = props.ranking.map((row, index) => (
     <li key={row.userName}>
-      {row.userName} : {row.count}件 : {row.lastDate}
+      <span>
+        <strong>{index + 1}位.</strong>
+      </span>
+      <span>
+        <strong>{row.userName}</strong>
+      </span>
+      <span>
+        <strong>{row.count}</strong>件
+      </span>
+      <span>{row.lastDate}</span>
     </li>
   ));
 
   return (
     <div {...props}>
       <h1>ランキング</h1>
-      {mapList}
+      <ul>{mapList}</ul>
     </div>
   );
 };

@@ -3,8 +3,13 @@ import { database } from '.';
 
 export function getCount(userName: string, callback: (count: number) => void) {
   database.ref('ranking/' + userName + '/count').on('value', (snapshot) => {
-    callback(snapshot.val());
+    callback(snapshot.val() || 0);
   });
+}
+export function userInit(userName: string) {
+  return database
+    .ref('ranking/' + userName)
+    .update({ count: 0, lastDate: getTimeStamp(), userName });
 }
 
 export function getRanking(callback: (ranking: RankingList) => void) {

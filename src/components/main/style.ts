@@ -7,36 +7,41 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
   ${mainCard}
   background-color: #2E2833;
   justify-content: space-between;
-  button {
-    width: 10rem;
-    height: 10rem;
+  .count_num {
     ${flexCenter}
-    border-radius: 50%;
-    border: none;
-    box-shadow: 0px 4px 9px 6px #00000047;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6rem;
+    height: 5.6rem;
+    transform: translate(-50%, -58%);
+    & > span {
+      display: block;
+      &:first-child {
+        font-size: 1.5em;
+      }
+      &:last-child {
+        text-align: right;
+      }
+    }
   }
   .count {
     & > div {
       &:nth-child(2) {
-          max-width: 7rem;
-          margin: 0 auto;
-          padding-bottom: 1rem;
-        & > span {
-            display: block;
-          &:first-child {
-            font-size: 1.7em;
-          }
-          &:last-child{
-              text-align: right;
-          }
-        }
+        
+        margin: 0 auto;
+        padding-bottom: 1rem;
+        position: relative;
       }
 
-      &:nth-child(3){
-          padding-top: .5rem;
-          text-align: center;
+      &:nth-child(3) {
+        padding-top: 0.5rem;
+        text-align: center;
       }
-
     }
+  }
+  .clock {
+    font-size: 1.2rem;
   }
 `;

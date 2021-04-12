@@ -1,19 +1,19 @@
-import firebase from "firebase/app"
-import "firebase/database"
-import "firebase/firestore"
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/firestore';
 const config = {
-    apiKey: "AIzaSyACsEjJsK4H5cLrb5nD69w69IKO0PEdxX0",
-    authDomain: "tell-ic-2021.firebaseapp.com",
-    projectId: "tell-ic-2021",
-    storageBucket: "tell-ic-2021.appspot.com",
-    messagingSenderId: "156830715150",
-    appId: "1:156830715150:web:3e1c1a6fde9ef764971b5f",
-    measurementId: "G-K5K1R7ZW2L"
+  apiKey: 'AIzaSyAi0Iu6w1LPv8EoaHNYxOFD_erxApzp6sA',
+  authDomain: 'ic-tel.firebaseapp.com',
+  projectId: 'ic-tel',
+  storageBucket: 'ic-tel.appspot.com',
+  messagingSenderId: '491194826467',
+  appId: '1:491194826467:web:f9c32e17e1221b3b8e0fd6',
+  measurementId: 'G-NLXVDW4785',
 };
 
-const firebaseApp = firebase.apps.length === 0 ? firebase.initializeApp(config) : firebase;
-
+const firebaseApp =
+  firebase.apps.length === 0 ? firebase.initializeApp(config) : firebase;
 
 export const firestore = firebaseApp.firestore && firebaseApp.firestore();
 
-export const database = firebaseApp.database && firebaseApp.database()
+export const database = firebaseApp.database && firebaseApp.database();

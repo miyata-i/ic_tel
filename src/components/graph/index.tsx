@@ -1,10 +1,13 @@
-import React from "react";
-import { style } from "./style"
-export type Props = {
-
-}
+import React from 'react';
+import { Style } from './style';
+export type Props = {};
 const Component: React.FC<Props> = (props) => {
-    return <div {...props} >graph</div>
-}
+  return (
+    <Style>
+      グラフ
+      <div> coming soon...</div>
+    </Style>
+  );
+};
 
-export default style(Component)
+export default Component;

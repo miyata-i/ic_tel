@@ -99,8 +99,8 @@ export const SetSVG = (proficiencyLevel: number): Props => {
 
   const circumference =
     proficiencyLevel > 25
-      ? proficiencyLevel > 50 ? (proficiencyLevel > 75 ? 400 : 400) : 400
-      : 400;
+      ? proficiencyLevel > 50 ? (proficiencyLevel > 75 ? 600 : 600) : 600
+      : 600;
 
   return {
     percent: proficiencyLevel,

@@ -5,6 +5,9 @@ import { flexCenter, mainCard } from 'styles';
 
 export const style = (Component: React.FC<Props>) => styled(Component)`
   ${mainCard}
+  h1{
+    text-align: center;
+  }
   background-color: #2E2833;
   justify-content: space-between;
   .count_num {
@@ -26,6 +29,9 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
       }
     }
   }
+  .tel_button{
+    margin: 1rem 0;
+  }
   .count {
     & > div {
       &:nth-child(2) {
@@ -42,6 +48,6 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
     }
   }
   .clock {
-    font-size: 1.2rem;
+    font-size: .9rem;
   }
 `;

@@ -96,8 +96,8 @@ const Component: React.FC<Props> = (props) => {
       </div>
       <div>
         <Button
+          className="tel_button"
           variant="contained"
-          size="large"
           onClick={tryTell}
           endIcon={<PhoneInTalkIcon />}
         >

@@ -1,5 +1,3 @@
-import { updateDate } from 'lib/firebase/function';
-import { getUserName } from 'lib/localStorage';
 import React from 'react';
 import { style } from './style';
 export type Ranking = {
@@ -14,10 +12,6 @@ export type Props = {
   ranking: RankingList,
 };
 const Component: React.FC<Props> = (props) => {
-  React.useEffect(() => {
-    updateDate(getUserName());
-  }, []);
-
   const mapList = props.ranking.map((row, index) => (
     <li key={row.userName}>
       <span>

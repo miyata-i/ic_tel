@@ -28,6 +28,13 @@ export function getRanking(callback: (ranking: RankingList) => void) {
     callback(Object.keys(data).map((key) => data[key]));
   });
 }
+export function getRankingOnce(): Promise<RankingList> {
+  return database
+    .ref('ranking')
+    .once('value')
+    .then((snapshot) => snapshot.val());
+}
+
 export function setTell(userName: string, count: number) {
   const now = getTimeStamp();
   const data = {
@@ -81,18 +88,16 @@ export async function isUpdate() {
   return dbDate !== nowDate;
 }
 
-export async function updateDate(userName: string): Promise<void> {
+export async function updateDate(): Promise<void> {
   if (!await isUpdate()) {
     return;
   }
-  return updateRanking(userName);
+  return updateRanking();
 }
 
-function updateRanking(userName: string): Promise<void> {
+function updateRanking(): Promise<void> {
   setDate(getTimeStamp('date'));
-  return getCountOnce(userName).then((count) =>
-    database
-      .ref('ranking/' + userName)
-      .update({ count, yesterday: count, userName })
+  return getRankingOnce().then((ranking) =>
+    database.ref('/').update({ ranking })
   );
 }

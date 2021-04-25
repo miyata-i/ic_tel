@@ -8,7 +8,7 @@ import {
   getUserName,
   setUserName as setUserNameAtLocal,
 } from 'lib/localStorage';
-import { getCount, getRanking } from 'lib/firebase/function';
+import { getCount, getRanking, updateDate } from 'lib/firebase/function';
 import Button from '@material-ui/core/Button';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 const Component: React.FC = (props) => {
@@ -30,6 +30,7 @@ const Component: React.FC = (props) => {
       });
       setRanking(nextList);
     });
+    updateDate();
   }, []);
 
   function tryLogin(isCancel: boolean) {

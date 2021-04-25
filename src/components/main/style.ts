@@ -9,7 +9,6 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
     text-align: center;
   }
   background-color: #2E2833;
-  justify-content: space-between;
   .count_num {
     ${flexCenter}
     flex-direction: column;
@@ -30,12 +29,11 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
     }
   }
   .tel_button{
-    margin: 1rem 0;
+    margin: 1rem 0 2rem;
   }
   .count {
     & > div {
       &:nth-child(2) {
-        
         margin: 0 auto;
         padding-bottom: 1rem;
         position: relative;

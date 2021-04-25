@@ -6,11 +6,12 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
   ${mainCard}
   background-color: #D3C3B6;
   ul{
-      padding: none;
+      padding: 0 2rem;
       width: 100%;
       max-width: 25rem;
   }
   li {
+    margin: 0;
     transition: 0.3s;
     list-style-type: decimal;
     border-bottom: 1px solid #dddddddd;
@@ -28,7 +29,7 @@ export const style = (Component: React.FC<Props>) => styled(Component)`
         flex: 0 0 3rem;
       }
       &:nth-child(3){
-        flex: 0 0 3rem;
+        flex: 0 0 5rem;
       }
 
     }

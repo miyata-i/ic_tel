@@ -1,11 +1,20 @@
 import { Ranking, RankingList } from 'components/ranking';
 import { database } from '.';
 
-export function getCount(userName: string, callback: (count: number) => void) {
-  database.ref('ranking/' + userName + '/count').on('value', (snapshot) => {
-    callback(snapshot.val() || 0);
-  });
+export function getCount(userName: string, callback?: (count: number) => void) {
+  return database
+    .ref('ranking/' + userName + '/count')
+    .on('value', (snapshot) => {
+      callback && callback(snapshot.val() || 0);
+    });
 }
+export function getCountOnce(userName: string): Promise<number> {
+  return database
+    .ref('ranking/' + userName + '/count')
+    .once('value')
+    .then((s) => s.val() || 0);
+}
+
 export function userInit(userName: string) {
   return database
     .ref('ranking/' + userName)
@@ -14,7 +23,6 @@ export function userInit(userName: string) {
 
 export function getRanking(callback: (ranking: RankingList) => void) {
   database.ref('ranking').on('value', (snapshot) => {
-    console.log(snapshot.val());
     const data = snapshot.val();
 
     callback(Object.keys(data).map((key) => data[key]));
@@ -35,15 +43,56 @@ export function setTell(userName: string, count: number) {
     );
 }
 
-const getTimeStamp = () => {
+const getTimeStamp = (type?: 'full' | 'date' | 'time') => {
   const now = new Date();
   const month = now.getMonth() + 1;
   const date = now.getDate();
   const hours = now.getHours();
   const minutes = now.getMinutes();
-  return `${zero(month)}/${zero(date)} ${zero(hours)}:${zero(minutes)}`;
+  switch (type) {
+    case 'full':
+      return `${zero(month)}/${zero(date)} ${zero(hours)}:${zero(minutes)}`;
+    case 'date':
+      return `${zero(month)}/${zero(date)}`;
+    case 'time':
+      return `${zero(hours)}:${zero(minutes)}`;
+    default:
+      return `${zero(month)}/${zero(date)} ${zero(hours)}:${zero(minutes)}`;
+  }
 };
+const createDate = () => {};
 
 function zero(num: number) {
   return ('00' + num).slice(-2);
+}
+
+export function setDate(date: string) {
+  database.ref('/').update({ date });
+}
+
+export function getDate(): Promise<string> {
+  return database.ref('date').once('value').then((s) => {
+    return s.val() || '';
+  });
+}
+export async function isUpdate() {
+  const dbDate = await getDate();
+  const nowDate = getTimeStamp('date');
+  return dbDate !== nowDate;
+}
+
+export async function updateDate(userName: string): Promise<void> {
+  if (!await isUpdate()) {
+    return;
+  }
+  return updateRanking(userName);
+}
+
+function updateRanking(userName: string): Promise<void> {
+  setDate(getTimeStamp('date'));
+  return getCountOnce(userName).then((count) =>
+    database
+      .ref('ranking/' + userName)
+      .update({ count, yesterday: count, userName })
+  );
 }

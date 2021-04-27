@@ -98,13 +98,12 @@ export async function updateDate(): Promise<void> {
 function updateRanking(): Promise<void> {
   setDate(getTimeStamp('date'));
   return getRankingOnce().then((ranking) => {
-    const next: any[] = [];
-    ranking.forEach((item) => {
-      next.push({
-        ...item,
-        yesterday: item.count,
-      });
+    Object.keys(ranking).forEach((key: any) => {
+      ranking[key] = {
+        ...ranking[key],
+        yesterday: ranking[key].count,
+      };
     });
-    database.ref('/').update({ ranking: next });
+    database.ref('/').update({ ranking });
   });
 }

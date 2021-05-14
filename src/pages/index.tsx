@@ -34,7 +34,7 @@ const Component: React.FC = (props) => {
   }, []);
 
   function tryLogin(isCancel: boolean) {
-    return function(next?: string) {
+    return function (next?: string) {
       if (isCancel) {
         setIsOpen(!!!userName.length);
         return;
@@ -52,9 +52,9 @@ const Component: React.FC = (props) => {
   return (
     <div {...props}>
       <div className="main">
-        <MainComponent count={count} />
+        <MainComponent user_name={userName} count={count} />
         <RankingComponent ranking={ranking} />
-        <GraphComponent />
+        <GraphComponent user_name={userName} />
       </div>
       {isOpen && (
         <LoginComponent

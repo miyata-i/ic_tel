@@ -67,7 +67,7 @@ const getTimeStamp = (type?: 'full' | 'date' | 'time') => {
       return `${zero(month)}/${zero(date)} ${zero(hours)}:${zero(minutes)}`;
   }
 };
-const createDate = () => {};
+const createDate = () => { };
 
 function zero(num: number) {
   return ('00' + num).slice(-2);
@@ -106,4 +106,11 @@ function updateRanking(): Promise<void> {
     });
     database.ref('/').update({ ranking });
   });
+}
+
+export type Log = { [key: string]: { date: string } };
+export function getLog(userName: string, callback?: (log: Log) => void) {
+  database.ref("/users/" + userName + "/log").orderByChild("date").on('value', (snapshot) => {
+    callback && callback(snapshot.val() || {});
+  })
 }

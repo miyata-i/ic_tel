@@ -1,5 +1,4 @@
 import { setTell } from 'lib/firebase/function';
-import { getUserName } from 'lib/localStorage';
 import React from 'react';
 import { style } from './style';
 import Button from '@material-ui/core/Button';
@@ -11,6 +10,7 @@ import ClockComponent from './clock';
 import CircleSVG_Component, { SetSVG } from './circleSVG';
 export type Props = {
   count: number,
+  user_name: string
 };
 const Component: React.FC<Props> = (props) => {
   const [loading, setLoading] = React.useState(false);
@@ -37,7 +37,7 @@ const Component: React.FC<Props> = (props) => {
       return;
     }
     setLoading(true);
-    setTell(getUserName(), props.count)
+    setTell(props.user_name, props.count)
       .then(() => {
         //alert('お疲れ様です！登録しました。残りは' + (200 - props.count - 1) + '件です。');
         handleClick('お疲れ様です。登録しました。残り' + (200 - props.count - 1) + '件です。');

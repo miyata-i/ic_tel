@@ -17,6 +17,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja-JP" dir="ltr">
+        <head>
+          <title>ic_tel</title>
+        </head>
         <Head>
           {/* windows */}
           <meta
@@ -52,7 +55,6 @@ class MyDocument extends Document {
           <link rel="icon" sizes="192x192" href="/icon-192x192.png" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
-          <title>ic_tel</title>
         </Head>
         <body>
           <Main />

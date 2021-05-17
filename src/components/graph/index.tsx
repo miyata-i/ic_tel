@@ -15,7 +15,7 @@ function dateFormat(logDate: string) {
   const hours = padding(_date.getHours());
   const minutes = padding(_date.getMinutes());
   const dayOf = dayOfWeek[_date.getDay()]
-  return `${month}/${date}(${dayOf}) ${hours}:${minutes}`;
+  return `${month}/${date}(${dayOf}) ${hours} : ${minutes}`;
 }
 const Component: React.FC<Props> = (props) => {
   const [log, setLog] = React.useState<Log>({});

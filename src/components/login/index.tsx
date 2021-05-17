@@ -42,7 +42,6 @@ const Component: React.FC<Props> = (props) => {
               id="standard-textarea"
               label="ニックネーム"
               placeholder="必須です。"
-              multiline
               onChange={handleChange}
               autoFocus
               color="primary"
@@ -55,7 +54,7 @@ const Component: React.FC<Props> = (props) => {
           </Button>
 
           <Button onClick={handleClick} variant="outlined" color="secondary">
-            ログイン
+            login
           </Button>
         </div>
       </Paper>

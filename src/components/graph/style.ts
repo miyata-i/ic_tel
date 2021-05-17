@@ -22,8 +22,9 @@ export const Style = styled.div`
     display: flex;
     flex-direction: column-reverse;
     overflow-y: scroll;
-    height: 30vw;
-    font-size: 1rem;
+    height: 35%;
+    font-size: 1.05rem;
+    font-weight: 200;
     &>div{
       padding: .25rem .25rem;
     }

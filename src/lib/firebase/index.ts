@@ -2,13 +2,13 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/firestore';
 const config = {
-  apiKey: 'AIzaSyAi0Iu6w1LPv8EoaHNYxOFD_erxApzp6sA',
-  authDomain: 'ic-tel.firebaseapp.com',
-  projectId: 'ic-tel',
-  storageBucket: 'ic-tel.appspot.com',
-  messagingSenderId: '491194826467',
-  appId: '1:491194826467:web:f9c32e17e1221b3b8e0fd6',
-  measurementId: 'G-NLXVDW4785',
+  apiKey: "AIzaSyAmOA25V1lExJe_XiBXYx5rbO5LTt3zIMg",
+  authDomain: "ic-tel-c2a9b.firebaseapp.com",
+  databaseURL: "https://ic-tel-c2a9b-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ic-tel-c2a9b",
+  storageBucket: "ic-tel-c2a9b.appspot.com",
+  messagingSenderId: "38708947460",
+  appId: "1:38708947460:web:2d1fcefe5f5c7dd546e351",
 };
 
 const firebaseApp =
